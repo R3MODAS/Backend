@@ -71,3 +71,6 @@ Let's provide information to the user in flash messages (alerts such as success,
 
 - Flash message (package) allows us to send data made on one route and can be used on other routes as well
 
+## Intermediate mongodb
+Some Questions are here to solve for the advanced mongodb
+- How to perform a case-insensitive search in Mongoose?
