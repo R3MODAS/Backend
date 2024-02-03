@@ -1,3 +1,12 @@
+# Completed till Now
+- Nodejs ✔
+- Expressjs and its basics ✔
+- ejs and Express generator ✔
+- Mongodb - dbs, models(collections), schema(document) ✔
+- Session and cookies ✔
+- Creating sessions, using sessions across routes and destroying them ✔
+- Creating cookies, using cookies across routes and destroying them ✔
+
 # Databases
 Database is a place where the app stores their data.
 
@@ -39,7 +48,7 @@ Code Side and MongoDB Side
 
 - Session data is more safe than Cookie data as it can't be easily hacked by anyone
 
-- npm i express-session to install session package and we can use it now to use session data
+- npm i express-session and npm i cookie-parser to install session and cookie package to use session data and cookies data
 
 To set the middleware session we can use it like this
 
@@ -52,3 +61,10 @@ To set the middleware session we can use it like this
 - req.session.name = value to create a session, req.session.name to read the session from the server, req.session.destroy to remove the session from the server
 
 - res.cookie(name,value) to create a cookie and sending it to the browser, req.cookies.name to read the cookie from the browser, res.clearCookie(name) to delete the cookie from the browser
+
+## Advanced part of Backend
+Flash Messages -> To provide information to the user (alerts such as success, warning or error)
+
+- To use flash messages we will require connect-flash package which we can install using npm -i connect-flash but you will have to setup express-session and setup the middleware for the session as well.
+
+- 
