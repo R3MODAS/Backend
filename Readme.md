@@ -63,8 +63,11 @@ To set the middleware session we can use it like this
 - res.cookie(name,value) to create a cookie and sending it to the browser, req.cookies.name to read the cookie from the browser, res.clearCookie(name) to delete the cookie from the browser
 
 ## Advanced part of Backend
-Flash Messages -> To provide information to the user (alerts such as success, warning or error)
+Let's provide information to the user in flash messages (alerts such as success, warning or error)
 
-- To use flash messages we will require connect-flash package which we can install using npm -i connect-flash but you will have to setup express-session and setup the middleware for the session as well.
+- To create flash messages, we will require connect-flash package which we can install using npm i connect-flash but you will have to setup express-session and setup the middleware for the session as well.
 
-- 
+- We can just get an alert message from bootstrap and now we have to execute flash message on different routes and we have to make sure that the data defined on one route is accessible to other routes as well but it is just not possible
+
+- Flash message (package) allows us to send data made on one route and can be used on other routes as well
+
