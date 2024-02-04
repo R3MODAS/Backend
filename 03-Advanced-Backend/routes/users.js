@@ -7,14 +7,7 @@ const userSchema = mongoose.Schema({
   username: String,
   nickname: String,
   description: String,
-  categories: {
-    type: Array,
-    default: []
-  },
-  createdDate: {
-    type: Date,
-    default: Date.now()
-  }
-})
+  categories: Array,
+}, {timestamps: true})
 
 module.exports = mongoose.model("User", userSchema)

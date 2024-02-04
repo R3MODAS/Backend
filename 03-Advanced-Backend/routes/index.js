@@ -6,7 +6,7 @@ var router = express.Router();
 //     // const {username,password} = req.body
 //     const username = "remo"
 //     const password = "pass"
-  
+
 //     if (username != "remo" || password != "pass") {
 //       req.flash("type", "Error")
 //       req.flash("alert", "danger")
@@ -26,30 +26,38 @@ var router = express.Router();
 // })
 
 //! Mongoose
-const User = require("./users") 
+const User = require("./users")
 
-router.get("/", (req,res) => {
+router.get("/", (req, res) => {
     res.render('index')
 })
 
-router.get("/create", async(req,res) => {
-   const createdUser = await User.create({
-    username: "Sharon",
-    nickname: "sharon",
-    description: "I am a sde-2 engineer",
-    categories: ["Node", "Express", "Ruby", "GoLang"]
-   })
-   res.send(createdUser)
+router.get("/create", async (req, res) => {
+    const createdUser = await User.create({
+        username: "Sharadindu",
+        nickname: "sharadindu",
+        description: "I am a devops engineer",
+        categories: ["Aws", "CI/CD", "Cloud"]
+    })
+    res.send(createdUser)
 })
 
-router.get("/findUser", async (req,res) => {
+router.get("/finduser", async (req, res) => {
     //! Case 1 
     // new RegExp(search, flags)
-    // const regex = new RegExp("^SHaRad$", "i");
+    // const regex = new RegExp("^remo$", "i");
     // const user = await User.find({username: regex})
     // res.send(user)
 
     //! Case 2
+    // const user = await User.find({categories: {$all: ["MongoDB"]}})
+    // res.send(user)
+
+    //! Case 3
+    const user = await User.find({
+        createdAt: "2024-02-04T12:48:01.201+00:00"
+    })
+    res.send(user)
 })
 
 module.exports = router;
