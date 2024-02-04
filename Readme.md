@@ -109,3 +109,11 @@ Some Questions are here to solve for the advanced mongodb
     })
 
 - The $expr operator allows you to use aggregation expressions (used for complex situations) and $and is used to add two conditions and strLenCP (aggregated method) checks the length of the nickname and this whole thing is returning the users with nickname length >= 0 to length <= 6
+
+## Authentication and Authorization
+
+- passport.js is used for that purpose and the heart of passport is strategy (type of login/signup) whether to use google/twitter/microsoft/local(username-password) and we can change the strategy anytime however it is required on our code. but for now we will use local strategy in our code.
+
+- 3 npm packages are required here to work with authentication and authorization that is passport, passport-local, passport-local-mongoose
+
+- Passport.js is a popular authentication middleware for Node.js, passport-local is used for the strategy that can be used (google/microsoft/local), passport-local-mongoose is used to add username, hashed password, and other necessary fields to the model along with the custom fields in mongoose.
