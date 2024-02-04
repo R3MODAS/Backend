@@ -37,7 +37,6 @@ router.get("/create", async (req, res) => {
         username: "Sharadindu",
         nickname: "sharadindu",
         description: "I am a devops engineer",
-        categories: ["Aws", "CI/CD", "Cloud"]
     })
     res.send(createdUser)
 })
@@ -54,10 +53,31 @@ router.get("/finduser", async (req, res) => {
     // res.send(user)
 
     //! Case 3
-    const user = await User.find({
-        createdAt: "2024-02-04T12:48:01.201+00:00"
-    })
-    res.send(user)
+    // const date1 = new Date('2024-02-04')
+    // const date2 = new Date('2024-02-05')
+    // const user = await User.find({ createdAt: { $gte: date1, $lte: date2 } })
+    // res.send(user)
+
+    //! Case 4 
+    // const user = await User.find({ categories: {$exists: true} })
+    // res.send(user)
+
+    //! Case 5
+    // try {
+    //     const user = await User.find({
+    //         $expr: {
+    //             $and: [
+    //                 { $gte: [{ $strLenCP: '$nickname' }, 0] },
+    //                 { $lte: [{ $strLenCP: '$nickname' }, 6] }
+    //             ]
+    //         }
+    //     })
+    //     res.send(user)
+    // }
+    // catch (err) {
+    //     console.log(err)
+    // }
+
 })
 
 module.exports = router;
