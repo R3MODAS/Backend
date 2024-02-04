@@ -73,4 +73,14 @@ Let's provide information to the user in flash messages (alerts such as success,
 
 ## Intermediate mongodb
 Some Questions are here to solve for the advanced mongodb
-- How to perform a case-insensitive search in Mongoose?
+- How to perform a case-insensitive search in mongoose?
+- How do I find documents where an array field contains all of a set of values?
+- How can I search for documents with a specific date range in mongoose?
+- How can I filter documents based on the existence of a field in mongoose?
+- How can I filter documents based on a specific field's length in mongoose?
+
+How to perform a case-insensitive search in mongoose ?
+- we will create a model named userModel with a schema and now we are gonna use userModel.find({username: usernameToSearch}) but there is a problem that is if the data we sent is slightly diff from the db, it will not be able to find it so we need to use regex
+
+- new Regex(data, flags) so we will provide the data anyhow and in flag we will provide "i" as it means case insensitive data and to further find the exact user from the db (as there can be same name) we can use ^ and $ as ^ means starting should be like the data and $ means ending should be like the data. ^Sharad$ so it will return the data for sharad user only not for anyone else
+
