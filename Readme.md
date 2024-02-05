@@ -7,6 +7,16 @@
 - Creating sessions, using sessions across routes and destroying them ✔
 - Creating cookies, using cookies across routes and destroying them ✔
 
+# Ejs
+Express.js ejs setup
+- install ejs
+- set view engine // app.set("view engine", "ejs")
+- create views folder
+- create ejs files
+- render ejs files inside route
+- express static files setup // app.use(express.static("public"))
+- architecture of public folder (stylesheets,javascripts,images)
+
 # Databases
 Database is a place where the app stores their data.
 
@@ -110,10 +120,14 @@ Some Questions are here to solve for the advanced mongodb
 
 - The $expr operator allows you to use aggregation expressions (used for complex situations) and $and is used to add two conditions and strLenCP (aggregated method) checks the length of the nickname and this whole thing is returning the users with nickname length >= 0 to length <= 6
 
-## Authentication and Authorization
-
+## Authentication and Authorization(Theory)
 - passport.js is used for that purpose and the heart of passport is strategy (type of login/signup) whether to use google/twitter/microsoft/local(username-password) and we can change the strategy anytime however it is required on our code. but for now we will use local strategy in our code.
 
 - 3 npm packages are required here to work with authentication and authorization that is passport, passport-local, passport-local-mongoose
 
 - Passport.js is a popular authentication middleware for Node.js, passport-local is used for the strategy that can be used (google/microsoft/local), passport-local-mongoose is used to add username, hashed password, and other necessary fields to the model along with the custom fields in mongoose.
+
+## Authentication and Authorization(Practical)
+- Install the packages mentioned above along with mongoose and express-session and write the app.js code first in app.js file and write it after view engine and before logger
+
+- Setup users.js properly and in index.js try to register first and then other codes as well
