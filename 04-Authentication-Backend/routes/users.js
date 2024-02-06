@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const mongoose = require("mongoose")
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+// connection of mongodb server and adding a db
+mongoose.connect("mongodb+srv://remo:remo123@cluster0.zi35bim.mongodb.net/PracticeDB")
 
-module.exports = router;
+const userSchema = mongoose.Schema({
+  username: String,
+  nickname: String,
+  description: String,
+  categories: Array,
+}, {timestamps: true})
+
+module.exports = mongoose.model("User", userSchema)

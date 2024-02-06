@@ -8,6 +8,8 @@
 - Creating cookies, using cookies across routes and destroying them ✔
 
 # Ejs
+EJS, or Embedded JavaScript is a popular template engine for Node.js that allows us to generate dynamic HTML content by embedding JavaScript code within your HTML templates.
+
 Express.js ejs setup
 - install ejs
 - set view engine // app.set("view engine", "ejs")
@@ -63,9 +65,11 @@ Code Side and MongoDB Side
 To set the middleware session we can use it like this
 
 - app.use(session({
-    resave: false // if the session value is not changed then don't resave the value to avoid load on server
-    saveUninitialized: false // the data has no name then don't save it to avoid too much unnecessary data and cause load on server
-    secret: secret_key // secret_key which will be used to encrypt the data on server
+    resave: false // It prevents the session from being saved back to the session store on every request, regardless of whether the session data has been modified.
+
+    saveUninitialized: false // It ensures that the session is not saved for a request that doesn't modify the session data
+
+    secret: secret_key // It is used to encrypt the data on server
 }))
 
 - req.session.name = value to create a session, req.session.name to read the session from the server, req.session.destroy to remove the session from the server
@@ -84,7 +88,7 @@ Let's provide information to the user in flash messages (alerts such as success,
 ## Intermediate mongodb
 Some Questions are here to solve for the advanced mongodb
 - How to perform a case-insensitive search in mongoose?
-- How do I find documents where an array field contains all of a set of values?
+- How do I find documents where an array field contains all of a set of values in mongoose?
 - How can I search for documents with a specific date range in mongoose?
 - How can I filter documents based on the existence of a field in mongoose?
 - How can I filter documents based on a specific field's length in mongoose?
@@ -131,3 +135,13 @@ Some Questions are here to solve for the advanced mongodb
 - Install the packages mentioned above along with mongoose and express-session and write the app.js code first in app.js file and write it after view engine and before logger
 
 - Setup users.js properly and in index.js try to register first and then other codes as well
+
+## Understanding the code of aut
+
+- app.use(expressSession(....)) // This will allow us to create session for the server to save data
+
+- app.use(passport.initialize()) // This will initialize passport along with its power of authentication and authorization
+
+- app.use(passport.session()) // This will create session for passport to save data
+
+- passport.serializeUser(usersRouter.serializeUser()) and passport.deserializeUser(usersRouter.deserializeUser()) // This will serialize/deserialize user from the session. serializeUser is called during the login process to store the user information in the session, and deserializeUser is called on every subsequent request to restore/get the user object.
