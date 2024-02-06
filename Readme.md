@@ -136,7 +136,7 @@ Some Questions are here to solve for the advanced mongodb
 
 - Setup users.js properly and in index.js try to register first and then other codes as well
 
-## Understanding the code of aut
+## Understanding the code of authorization and authentication
 
 - app.use(expressSession(....)) // This will allow us to create session for the server to save data
 
@@ -145,3 +145,66 @@ Some Questions are here to solve for the advanced mongodb
 - app.use(passport.session()) // This will create session for passport to save data
 
 - passport.serializeUser(usersRouter.serializeUser()) and passport.deserializeUser(usersRouter.deserializeUser()) // This will serialize/deserialize user from the session. serializeUser is called during the login process to store the user information in the session, and deserializeUser is called on every subsequent request to restore/get the user object.
+
+## Understanding the code on how to do the authorization and authentication
+
+- const localStrategy = require("passport-local") 
+  
+  Passport-local strategy for handling local (username and password) authentication.
+
+- passport.use(new localStrategy(User.authenticate()))
+  
+  It configures Passport to use the local strategy for authentication. The User.authenticate() method is expected to be a part of the User model to handle authentication.
+
+- const {username, password, secret} = req.body
+  const userdata = new User({
+   username: username,
+   secret: secret
+  })
+  
+  To register a user we will take the username,password and secret from the request body and now we will create a new object out of the User (model) with username and secret field
+
+- User.register(userdata,password)
+
+  It uses the register method of the User model (likely provided by Passport and Mongoose) to register the user with the provided data and password.
+  
+- .then((registeredUser) => {
+    passport.authenticate("local")(req, res, function () {
+        res.redirect("/profile");
+    })
+  })
+
+  If the user registration is successful, it uses Passport's authenticate method with the "local" strategy to authenticate the user. Upon successful authentication, it redirects the user to the "/profile" route.
+
+- router.post("/login", passport.authenticate("local", {
+    successRedirect: "/profile",
+    failureRedirect: "/login"
+  }) ,(req,res) => {})
+
+  If the authentication of the user using the local strategy is successful (checking the username and password) then it goes to /profile else /login
+
+- router.get("/logout", (req,res,next) => {
+    req.logout((err) => {
+        if(err) return next(err)
+        res.redirect("/")
+    })
+  })
+
+  It logs out the user and redirects back to index page
+
+- function isLoggedIn(req,res,next){
+    if(req.isAuthenticated()){
+        return next()
+    }
+    res.redirect("/")
+  }
+  router.get("/profile", isLoggedIn, (req,res) => { res.render("profile") })
+
+  This helps to check if the user is logged in or not so if they are authenticated then just move to the /profile page else just redirect me back to index page (/profile is a protected route and it is being protected by this isLoggedIn middleware)
+
+- const plm = require("passport-local-mongoose")
+  const userSchema = new mongoose.Schema({...})
+  userSchema.plugin(plm)
+
+  In moongose code (user.js) just import the passport-local-mongoose and then in the created Schema(userSchema) and The line userSchema.plugin(plm) is using the passport-local-mongoose plugin to enhance the userSchema with additional functionality related to local authentication using Passport.js.
+

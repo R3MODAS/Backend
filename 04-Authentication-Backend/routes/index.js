@@ -10,7 +10,7 @@ router.get("/", (req,res) => {
     res.render("index")
 })
 
-router.get("/profile", isLoggedIn , (req, res) => {
+router.get("/profile", isLoggedIn , (req,res) => {
     res.render("profile")
 })
 
@@ -31,9 +31,7 @@ router.post("/register", (req, res) => {
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/profile",
     failureRedirect: "/login"
-}), (req, res) => {
-
-})
+}) ,(req,res) => {})
 
 router.get("/logout", (req,res,next) => {
     req.logout((err) => {
