@@ -6,6 +6,10 @@
 - Session and cookies ✔
 - Creating sessions, using sessions across routes and destroying them ✔
 - Creating cookies, using cookies across routes and destroying them ✔
+- Flash messages ✔
+- Intermediate Mongodb ✔
+- Authentication and Authorization ✔
+- Projects - PinInterest, Youtube Music, Instagram, Google photos, Flipkart
 
 # Ejs
 EJS, or Embedded JavaScript is a popular template engine for Node.js that allows us to generate dynamic HTML content by embedding JavaScript code within your HTML templates.
